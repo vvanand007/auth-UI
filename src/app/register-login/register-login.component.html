@@ -5,33 +5,36 @@
     </div>
     <div class="card-body">
       <div class="form-group">
-        <label for="email">Email address</label>
+        <label for="email-register">Email address</label>
         <input
-          type="email"
-          class="form-control"
-          id="email"
-          placeholder="name@example.com"
-        />
-      </div>
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input
+          [(ngModel)]="emailRegister"
           type="text"
           class="form-control"
-          id="name"
-          placeholder="Vivek Anand"
-        />
+          id="email-register"
+          placeholder="name@example.com"
+        />{{ emailRegister }}
       </div>
       <div class="form-group">
-        <label for="password">Password</label>
+        <label for="name-register">Name</label>
         <input
+          [(ngModel)]="nameRegister"
+          type="text"
+          class="form-control"
+          id="name-register"
+          placeholder="Vivek Anand"
+        />{{ nameRegister }}
+      </div>
+      <div class="form-group">
+        <label for="password-register">Password</label>
+        <input
+          [(ngModel)]="passwordRegister"
           type="password"
           class="form-control"
-          id="password"
+          id="password-register"
           placeholder="Password"
-        />
+        />{{ passwordRegister }}
       </div>
-      <a href="#" class="btn btn-primary">Register</a>
+      <a (click)="onRegister()" class="btn btn-primary">Register</a>
     </div>
   </div>
 
@@ -43,22 +46,24 @@
       <div class="form-group">
         <label for="email">Email address</label>
         <input
+          [(ngModel)]="emailLogin"
           type="email"
           class="form-control"
           id="email"
           placeholder="name@example.com"
-        />
+        />{{ emailLogin }}
       </div>
       <div class="form-group">
         <label for="password">Password</label>
         <input
+          [(ngModel)]="passwordLogin"
           type="password"
           class="form-control"
           id="password"
           placeholder="Password"
-        />
+        />{{ passwordLogin }}
       </div>
-      <a href="#" class="btn btn-primary">Login</a>
+      <a (click)="onLogin()" class="btn btn-primary">Login</a>
     </div>
   </div>
 </div>
