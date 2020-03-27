@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { LandingService } from "../landing.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-landing",
@@ -6,7 +8,16 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./landing.component.css"]
 })
 export class LandingComponent implements OnInit {
-  constructor() {}
+  users = [];
+  constructor(
+    private _landingService: LandingService,
+    private _router: Router
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this._landingService.getUsers().subscribe(
+      res => (this.users = res),
+      err => console.log(err)
+    );
+  }
 }
