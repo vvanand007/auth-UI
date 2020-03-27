@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { AuthenticationService } from "../authentication.service";
 
 @Component({
   selector: "app-register-login",
@@ -6,20 +7,28 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./register-login.component.css"]
 })
 export class RegisterLoginComponent implements OnInit {
-  constructor() {}
-  public emailRegister = "";
-  public nameRegister = "";
-  public passwordRegister = "";
-  public emailLogin = "";
-  public passwordLogin = "";
+  registrationData = {};
+  loginData = {};
+  constructor(private _authorization: AuthenticationService) {}
 
   ngOnInit() {}
 
   onRegister() {
-    console.log("firing register");
+    console.log(this.registrationData);
+    this._authorization.registerUser(this.registrationData).subscribe(
+      res => {
+        console.log(res), localStorage.setItem("token", res.token);
+      },
+      err => console.log(err)
+    );
   }
-
   onLogin() {
-    console.log("logined");
+    console.log(this.loginData);
+    this._authorization.loginUser(this.loginData).subscribe(
+      res => {
+        console.log(res), localStorage.setItem("token", res.token);
+      },
+      err => console.log(err)
+    );
   }
 }
