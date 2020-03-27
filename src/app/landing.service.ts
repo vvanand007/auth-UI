@@ -6,7 +6,7 @@ import { HttpClient } from "@angular/common/http";
 })
 export class LandingService {
   private _getUsersURL =
-    "https://lftv2uxw5i.execute-api.us-east-1.amazonaws.com/dev/users";
+    "https://lftv2uxw5i.execute-api.us-east-1.amazonaws.com/dev/me";
   constructor(private _http: HttpClient) {}
   getUsers() {
     return this._http.get<any>(this._getUsersURL);

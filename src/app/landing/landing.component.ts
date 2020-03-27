@@ -8,7 +8,7 @@ import { Router } from "@angular/router";
   styleUrls: ["./landing.component.css"]
 })
 export class LandingComponent implements OnInit {
-  users = [];
+  public user = { email: "", name: "" };
   constructor(
     private _landingService: LandingService,
     private _router: Router
@@ -16,7 +16,7 @@ export class LandingComponent implements OnInit {
 
   ngOnInit() {
     this._landingService.getUsers().subscribe(
-      res => (this.users = res),
+      res => ((this.user.email = res.email), (this.user.name = res.name)),
       err => console.log(err)
     );
   }
